@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas</title>
+</head>
+<body>
+	<canvas id="cancan" style="border: 1px solid #000;" width="1000" height="1000">
+		
+	</canvas>
+	<script type="text/javascript">
+		var can = document.getElementById('cancan');
+		var dd = can.getContext('2d');
+		dd.fillStyle = "#FF0000";
+		dd.fillRect(0,0,200,200);
+		dd.moveTo(250,0);
+		dd.lineTo(250,100);
+		dd.stroke();
+		dd.beginPath();
+		dd.arc(300,50,50,0,2*Math.PI);
+		dd.stroke();
+		dd.closePath();
+		dd.font = "30px Arial";
+		dd.fillText("Hello world", 350,100);
+		dd.strokeText('canvas',350,200);
+		var colorc = dd.createLinearGradient(0,0,200,0);
+		colorc.addColorStop(0,"red");
+		colorc.addColorStop(1,"white");
+		dd.fillStyle = colorc;
+		dd.fillRect(0,210,110,30);
+		var circlec=dd.createRadialGradient(100,400,5,100,400,100);
+		circlec.addColorStop(0,"red");
+		circlec.addColorStop(1,"white");
+		dd.fillStyle = circlec;
+		dd.fillRect(0,300,200,500);
+	</script>
+</body>
+</html>
