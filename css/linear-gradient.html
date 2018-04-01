@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渐变</title>
+	<style type="text/css">
+	    div{margin-top: 10px;float: left;margin-left: 10px;
+	    width: 200px;height: 200px;}
+		.linearone{background: linear-gradient(red,yellow,blue);}
+		.lineartwo{background: linear-gradient(red 30%,yellow 45%,blue 45%);}
+		.linearthree{background: linear-gradient(#fb3 30%, #58a 0);
+			background-size: 100% 20px;}
+		.linearfour{background: linear-gradient(#fb3 33.3%,
+#58a 0, #58a 66.6%, yellowgreen 0);}
+		.linearfive{background: repeating-linear-gradient(60deg,#fb3, #fb3 22px, #58a 0, #58a 44px);}
+		.linearsix{background:#655; background-image: radial-gradient(tan 30%, transparent 0);
+			background-size: 40px 40px;}
+		.linearseven{background: repeating-linear-gradient(-45deg, black 0, black 25%, transparent 0, transparent 50%) 0 / .6em .6em;;}	
+	</style>
+</head>
+<body>
+	<div class="linearone"></div>
+	<div class="lineartwo"></div>
+	<div class="linearthree"></div>
+	<div class="linearfour"></div>
+	<div class="linearfive"></div>
+	<div class="linearsix"></div>
+	<div class="linearseven"></div>
+</body>
+</html>
