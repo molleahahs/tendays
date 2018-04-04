@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>y延长作用域</title>
+</head>
+<body>
+	<div style="text-align: center;width: 1200px;height: 100px;font-size: 23px;margin: 30px auto;">
+		function A里面包含另一个function B时,A被调用，B也不会执行。<br/>
+		结论：函数没有被调用不会执行
+	</div>
+	<div style="with: 400px;height: 500px">
+		<pre>
+			function A(){
+				console.log("a");
+				function B(){
+					console.log("b");
+				}
+				// B();
+			}
+			A();
+		</pre>
+	</div>
+	<script type="text/javascript">
+		function A(){
+			console.log("a");
+			function B(){
+				console.log("b");
+			}
+			// B();
+		}
+		A();
+	</script>
+</body>
+</html>

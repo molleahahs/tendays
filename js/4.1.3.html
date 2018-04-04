@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>参数是按值传递的</title>
+</head>
+<body>
+	<div style="text-align: center;width: 1200px;font-size: 23px;margin: 30px auto;">
+		在控制台看结果<br/>
+		参数是引用类型时，参数和变量是一个引用地址，参数能改变变量的属性，方法.<br/>
+		但是当参数在函数内部变为其他的引用类型或者基本类型后，就和外部变量没有关系了。<br/>
+		但根据代码2，书上的说明案例并不能证明参数是按值传递的
+	</div>
+	<div style="with: 400px;height: 500px;margin: 0 auto;">
+		<pre style="float: left;">
+			代码1
+			function setName(obj){
+				obj.name = 'XX';
+				obj = new Object();
+				obj.name = 'uu';
+			}
+			var person = new Object();
+			setName(person);
+			console.log(person.name);
+		</pre>
+		<pre style="float: left;margin-left: 30px;">
+			代码2
+			var obj1 = new Object();
+			obj1.name = "11"
+			var obj2 = obj1;
+			console.log("obj2第一次的值是"+obj2.name);
+			obj2.name = "22";
+			console.log("obj2第二次的值是"+obj2.name);
+			obj1 = new Object();
+			obj1.name = '33';
+			console.log("obj2第三次的值是"+obj2.name);
+		</pre>
+	</div>
+	<script type="text/javascript">
+		function setName(obj){
+			obj.name = 'XX';
+			obj = new Object();
+			obj.name = 'uu';
+		}
+		var person = new Object();
+		setName(person);
+		console.log("代码1结果");
+		console.log(person.name);
+	</script>
+	<script type="text/javascript">
+		var obj1 = new Object();
+		obj1.name = "11"
+		var obj2 = obj1;
+		console.log("代码2结果");
+		console.log("obj2第一次的值是"+obj2.name);
+		obj2.name = "22";
+		console.log("obj2第二次的值是"+obj2.name);
+		obj1 = new Object();
+		obj1.name = '33';
+		console.log("obj2第三次的值是"+obj2.name);
+	</script>
+</body>
+</html>
