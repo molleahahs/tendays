@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apply-call-bind.html</title>
+    <style type="text/css">
+        div{margin:0 auto;width:80%;text-align: left;}
+        .emphysize{width: 100%;font-size:20px;font-weight: bolder;color: #FF0000;}
+    </style>
+</head>
+<body>
+    <div>
+         <div class="emphysize">
+            变量不能通过delete操作符删除，因为它们的configurable是false<br/>
+            属性能通过delete删除
+         </div>
+    </div>
+   
+</body>
+<script type="text/javascript">
+        var wone =  "wone333";
+        console.log(wone);
+        delete wone;
+        console.log("删除wone");
+        console.log(wone);
+        console.log("----------------------------");
+        window.wtwo = "wtwo333";
+        console.log(window.wtwo);
+        delete window.wtwo;
+        console.log("删除wtwo");
+        console.log(window.wtwo);
+        console.log("----------------------------");
+        function funa(){
+            var funaone = "aone333";
+            console.log(funaone);
+            delete funaone;
+            console.log("删除funaone");
+            console.log(funaone);
+        }
+        funa();
+        console.log("----------------------------");
+        var obj = {
+            name: "xmm",
+            age: 560
+        }
+        console.log(obj.name);
+        delete obj.name;
+        console.log("删除对象的name");
+        console.log(obj.name);
+        console.log("----------------------------");
+</script>
+</html>

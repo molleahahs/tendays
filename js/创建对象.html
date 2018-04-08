@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建对象</title>
+	<style type="text/css">
+		div{margin:0 auto;width:80%;text-align: left;}
+		.wrapall{width: 100%}
+		.code{width: 100%;margin-bottom: 20px;}
+		.code:after{display: block;content: "";clear: both;}
+		.emphysize{width: 100%;font-size:20px;font-weight: bolder;color: #FF0000;}
+		pre{float: left;margin-top: 0;margin-bottom: 0;}
+		.fr{float:left;margin-left: 5%;width:40%;}
+	</style>
+</head>
+<body>
+	<div>
+		<div class="wrapall">
+			<div class="emphysize">
+				javascript创建对象有工厂模式，构造函数模式，原型模式，构造函数与原型混合模式
+			</div>
+			<div class="code">
+				<p class="emphysize">例子1-工厂模式</p>
+				<pre>
+function a(name,age,hobby){
+	var o = new Object();
+	o.name = name;
+	o.age = age;
+	o.hobby = hobby;
+	o.getName = function(){
+		console.log(this.name);
+    }
+    return o;
+}
+var agcone = a("娜娜",12,"dance");
+	.
+	.
+	.
+var agcn = a("娜娜n",121221,"nn");
+console.log("agcone instanceof Object:"+(agcone instanceof Object));
+console.log("agcone instanceof a:"+(agcone instanceof a));
+				</pre>
+				<div class="fr">
+					例1：工厂模式，能通过a创建多个相似的对象<br/>
+					但是不能说明这个对象是a创建的<br/>
+					书面语:工厂模式解决了常见多个相似对象的问题，但是没有解决对象识别的问题。
+				</div>
+			</div>
+			<div class="code">
+				<p class="emphysize">例子2-构造函数模式</p>
+				<pre>
+function A(name,age,hobby){
+	this.name = name;
+	this.age = age;
+	this.hobby = hobby;
+	this.getName = function(){
+		console.log(this.name);
+    }
+}
+var agzone = new A("依依",11,"sing");
+console.log("agzone instanceof A:"+(agzone instanceof A));
+console.log("agzone instanceof Object:"+(agzone instanceof Object));
+				</pre>
+				<div class="fr">
+					例2：构造函数模式，解决了对象的识别问题。<br/>
+					但是右边的getName方法在每个实例上都要创建一遍。
+					因为javascript中函数也是对象，因此，每创建一个函数就是实例化了一个对象<br/>
+					那么，构造函数A的任何实例的getName方法都是不相同的。
+				</div>
+			</div>
+			<div class="code">
+				<p class="emphysize">例3-原型模式</p>
+				<pre>
+function A(){}
+A.prototype.name = "芊芊";
+A.prototype.age = 11;
+A.prototype.hobby = "eat";
+A.prototype.getName = function(){
+	console.log(this.name);
+}
+var ayxone = new A();
+ayxone.getName();
+				</pre>
+				<div class="fr">
+					例3：原型模式，创建的实例都是相同的，除非它们传不同的参数<br/>
+					因为引用类型值保存的是指针，所有实例复制的都是指针，实例的所有引用属性都是一样的，
+					这不是我们想要的，可以使用构造函数与原型结合的方式解决<br/>
+					如果使用对象字面量创建原型对象，要将它的构造函数constructor属性重新指为A，
+					因为对象字面量的构造函数是Object.
+				</div>
+			</div>
+			<div class="code">
+				<p class="emphysize">例4-构造函数与原型混合模式</p>
+				<pre>
+function A(name,age,hobby){
+	this.name = name;
+	this.age = age;
+	this.hobby = hobby;
+	this.likes = ["food","film","game"];
+}
+A.prototype = {
+	constructor: A,
+	getName: function(){
+	console.log(this.name);
+    }
+}
+var ahhone = new A();
+				</pre>
+				<div class="fr">
+					例4：构造函数与原型混合模式，右边每个实例的likes数组值都互不影响，
+					而实例所有的方法指向都一样，其他属性随传参不同而不同。
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	// 例子1，工厂模式
+	function a(name,age,hobby){
+		var o = new Object();
+		o.name = name;
+		o.age = age;
+		o.hobby = hobby;
+		o.getName = function(){
+			console.log(this.name);
+	    }
+	    return o;
+	}
+	var agcone = a("娜娜",12,"dance");
+	console.log("例子1-工厂模式");
+	console.log("agcone instanceof Object:"+(agcone instanceof Object));
+	console.log("agcone instanceof a:"+(agcone instanceof a));
+    // 例子2，构造函数模式
+	function A(name,age,hobby){
+		this.name = name;
+		this.age = age;
+		this.hobby = hobby;
+		this.getName = function(){
+			console.log(this.name);
+	    }
+	}
+	var agzone = new A("依依",11,"sing");
+	console.log('例子2-构造函数模式');
+	console.log("agzone instanceof A:"+(agzone instanceof A));
+	console.log("agzone instanceof Object:"+(agzone instanceof Object));
+</script>
+</html>

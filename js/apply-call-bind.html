@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>apply-call-bind</title>
+	<style type="text/css">
+		div{margin:0 auto;width:80%;text-align: left;}
+		.wrapall{width: 100%}
+		.code{width: 100%;margin-bottom: 20px;}
+		.code:after{display: block;content: "";clear: both;}
+		.emphysize{width: 100%;font-size:20px;font-weight: bolder;color: #FF0000;}
+		pre{float: left;margin-top: 0;margin-bottom: 0;}
+		.fr{float:left;margin-left: 5%;width:56%;}
+	</style>
+</head>
+<body>
+	<div>
+		<div class="wrapall">
+			<div class="emphysize">
+				apply,call,bind都是将一个方法上下文(也就是this值)设置为apply,call,bind的第一个参数,这个参数的对象没有这个方法
+			</div>
+			<div class="code">
+				<p class="emphysize">例子1-调用其他对象的方法</p>
+				<pre>
+var girlone = {
+name: "妞妞",
+sex: "女",
+age: "18",
+hobby: "play,film",
+makeup: function(){
+	console.log(this.name+"会化妆")
+    }
+};
+var boyone = {
+	name: "冬冬",
+	sex: "男"
+};
+console.log(girlone.makeup())
+console.log(girlone.makeup.apply(boyone))
+				</pre>
+				<div class="fr">
+					例1：妞妞有化妆方法，冬冬没有，可以用apply,call,bind将妞妞化妆方法的this值指定为冬冬，那么冬冬也就有化妆方法了。
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	// 例子1
+	//调用对象的方法
+		var girlone = {
+		name: "妞妞",
+		sex: "女",
+		age: "18",
+		hobby: "play,film",
+		makeup: function(){
+			console.log(this.name+"会化妆")
+		    }
+		};
+		var boyone = {
+			name: "冬冬",
+			sex: "男"
+		};
+		console.log("例子1");
+		console.log(girlone.makeup());
+		console.log(girlone.makeup.apply(boyone));
+</script>
+</html>

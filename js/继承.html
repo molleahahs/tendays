@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承</title>
+	<style type="text/css">
+		div{margin:0 auto;width:80%;text-align: left;}
+		.wrapall{width: 100%}
+		.code{width: 100%;margin-bottom: 20px;}
+		.code:after{display: block;content: "";clear: both;}
+		.emphysize{width: 100%;font-size:20px;font-weight: bolder;color: #FF0000;}
+		pre{float: left;margin-top: 0;margin-bottom: 0;}
+		.fr{float:left;margin-left: 5%;width:40%;}
+	</style>
+</head>
+<body>
+	<div>
+		<div class="wrapall">
+			<div class="emphysize">
+				javascript的继承有原型链继承，
+			</div>
+			<div class="code">
+				<p class="emphysize">例子1-原型链继承</p>
+				<pre>
+function A(){
+	this.name = "aaname";
+}
+A.prototype.getName = function(){
+	return this.name;
+}
+function B(){
+	this.name = "bbname";
+}
+B.prototype = new A();
+var bjcone = new B();
+console.log(bjcone.getName());
+				</pre>
+				<div class="fr">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	//例1，原型链继承
+	function A(){
+		this.name = "aaname";
+	}
+	A.prototype.getName = function(){
+		return this.name;
+	}
+	function B(){
+		this.name = "bbname";
+	}
+	B.prototype = new A();
+	var bjcone = new B();
+	console.log("例1-原型链继承");
+	console.log(bjcone.getName());
+</script>
+</html>
