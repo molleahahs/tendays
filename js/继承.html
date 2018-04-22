@@ -17,7 +17,7 @@
 	<div>
 		<div class="wrapall">
 			<div class="emphysize">
-				javascript的继承有原型链继承，
+				javascript的继承有原型链继承，借用构造函数继承
 			</div>
 			<div class="code">
 				<p class="emphysize">例子1-原型链继承</p>
@@ -39,6 +39,54 @@ console.log(bjcone.getName());
 					
 				</div>
 			</div>
+			<div class="code">
+				<p class="emphysize">例子2-借用构造函数继承</p>
+				<pre>
+function C(){
+	this.colors = ["red","green","blue","white","black"];
+}
+function D(){
+	C.call(this);
+}
+var bone = new D();
+bone.colors.push("yellow");
+console.log(bone);
+var btwo = new D();
+console.log(btwo);
+				</pre>
+				<div class="fr">
+					
+				</div>
+			</div>
+			<div class="code">
+				<p class="emphysize">例子3-组合继承</p>
+				<pre>
+
+				</pre>
+				<div class="fr">
+					
+				</div>
+			</div>
+			<div class="code">
+				<p class="emphysize">例子4-nodejs中继承用util</p>
+				<pre>
+function G(){
+	this.sayName = function(){
+	console.log('Gname');
+    }
+}
+function H(){
+	
+}
+H.prototype = new G();
+var hone = new H();
+console.log(hone.sayName);
+				</pre>
+				<div class="fr">
+					nodejs中的util继承,能继承原型里面的方法，构造函数里面的方法和属性不能继承<br/>
+ 原生js的继承能继承构造函数的方法和属性，在这个例子里面H继承G，H把G的构造函数的里面的sayName方法放在了自己的原型里面<br/>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
@@ -57,5 +105,32 @@ console.log(bjcone.getName());
 	var bjcone = new B();
 	console.log("例1-原型链继承");
 	console.log(bjcone.getName());
+console.log("----------------------------")
+// 例子2
+function C(){
+	this.colors = ["red","green","blue","white","black"];
+}
+function D(){
+	C.call(this);
+}
+var bone = new D();
+bone.colors.push("yellow");
+console.log(bone);
+var btwo = new D();
+console.log(btwo);
+console.log("-------------------------------------")
+// 例四
+function G(){
+	this.sayName = function(){
+	console.log('Gname');
+    }
+}
+function H(){
+	
+}
+H.prototype = new G();
+var hone = new H();
+console.log(hone.sayName);
+
 </script>
 </html>
